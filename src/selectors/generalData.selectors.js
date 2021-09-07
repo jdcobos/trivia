@@ -1,0 +1,1 @@
+export const getCategoriesSelector =  state => state.generalData.category; 
