@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import { GET_CATEGORY } from '../../actions/generalData.action'
 import { connect } from "react-redux";
 import { getCategoriesSelector, getDifficultiesSelector } from '../../selectors/generalData.selectors';
@@ -19,8 +19,8 @@ const FormQuestions = ({ getCategory, categories, difficulties }) => {
         console.log(value)
     }
 
-        return(
-        <Fragment>
+      return(
+         <div className="formGame">
             <Form onFinish={startGame}>
                <Item name='name' label="Nombre">
                   <Input placeholder="Ingresa tu nombre"></Input>
@@ -41,9 +41,11 @@ const FormQuestions = ({ getCategory, categories, difficulties }) => {
                      )}
                   </Select>
                </Item>
-               <Button type="primary" htmlType="submit">Ingresar</Button>
+               <div className="contentbtnStartGame">
+                  <Button type="primary" htmlType="submit" className="btnStartGame">Ingresar</Button>
+               </div>
             </Form>
-         </Fragment>
+         </div>
         )
 }
 

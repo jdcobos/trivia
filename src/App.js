@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {Provider} from 'react-redux'
 import {store} from './store'
-import FormQuestions from "./components/formQuestions";
+import FormQuestions from "./components/formGame";
 import 'antd/dist/antd.css';
 import '../src/stylesheet/index.css';
 

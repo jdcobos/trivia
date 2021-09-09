@@ -1,0 +1,12 @@
+.formGame{
+    width: 500px;
+    margin: 15% auto 0 auto;
+}
+
+.contentbtnStartGame{
+    position: relative;
+}
+.btnStartGame{
+    position: absolute;
+    left: 45%;
+}
