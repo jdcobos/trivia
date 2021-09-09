@@ -1,30 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import { GET_CATEGORY } from '../../actions/generalData.action'
 import { connect } from "react-redux";
 import { getCategoriesSelector, getDifficultiesSelector } from '../../selectors/generalData.selectors';
+import {Input, Select, Form, Button} from 'antd'
 import { isEmpty } from 'lodash'
-const FormQuestions = ({ getCategory, categories, difficulties }) => {
 
-    const [stateCategory, setStateCategory] = useState([])
+const FormQuestions = ({ getCategory, categories, difficulties }) => {
+    
+    const {Option} = Select
+    const {Item} = Form
 
     useEffect(() => {
-        isEmpty(categories) ? getCategory() : setStateCategory(categories)
-    }, [categories, getCategory, setStateCategory])
+        isEmpty(categories) && getCategory() 
+    }, [categories, getCategory])
 
-    if (stateCategory && difficulties) {
 
-        return (
-            <div>
-                <label>aca iria el formulario</label>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <label>aca iria el loadin</label>
-            </div>
-        )
+    const startGame = value =>{
+        console.log(value)
     }
+
+        return(
+        <Fragment>
+            <Form onFinish={startGame}>
+               <Item name='name' label="Nombre">
+                  <Input placeholder="Ingresa tu nombre"></Input>
+               </Item>
+               <Item name='category' label="Categoria">
+                  <Select placeholder="Selecciona una Categoria" >
+                     {categories && 
+                     categories.map(({id, name},key) => 
+                     <Option key={key} value={id}>{name}</Option>
+                     )}
+                  </Select>
+               </Item>
+               <Item name='difficulty' label="Dificultad">
+                  <Select placeholder="Selecciona una Dificultad">
+                     {difficulties && 
+                     difficulties.map((item,key) => 
+                     <Option key={key} value={item}>{item}</Option>
+                     )}
+                  </Select>
+               </Item>
+               <Button type="primary" htmlType="submit">Ingresar</Button>
+            </Form>
+         </Fragment>
+        )
 }
 
 const mapStateToprops = state => ({
