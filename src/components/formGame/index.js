@@ -18,6 +18,7 @@ const FormQuestions = ({ getCategory, categories, difficulties, getQuestions }) 
 
     const startGame = value =>{
         delete value.name
+        value.difficulty === 'any difficulty' && delete value.difficulty
         getQuestions(value)
     }
 
