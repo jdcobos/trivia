@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { GET_CATEGORY } from '../../actions/generalData.action'
 import { connect } from "react-redux";
 import { getCategoriesSelector, getDifficultiesSelector } from '../../selectors/generalData.selectors';
+import { GET_QUESTIONS } from '../../actions/questions.action'
 import {Input, Select, Form, Button} from 'antd'
 import { isEmpty } from 'lodash'
 
-const FormQuestions = ({ getCategory, categories, difficulties }) => {
+const FormQuestions = ({ getCategory, categories, difficulties, getQuestions }) => {
     
     const {Option} = Select
     const {Item} = Form
@@ -16,33 +17,34 @@ const FormQuestions = ({ getCategory, categories, difficulties }) => {
 
 
     const startGame = value =>{
-        console.log(value)
+        delete value.name
+        getQuestions(value)
     }
 
       return(
          <div className="formGame">
             <Form onFinish={startGame}>
-               <Item name='name' label="Nombre">
-                  <Input placeholder="Ingresa tu nombre"></Input>
+               <Item name='name' label="Name"  rules={[{ required: true, message: 'Please enter a name' }]}>
+               <Input placeholder="Enter your name"></Input>
                </Item>
-               <Item name='category' label="Categoria">
-                  <Select placeholder="Selecciona una Categoria" >
-                     {categories && 
-                     categories.map(({id, name},key) => 
-                     <Option key={key} value={id}>{name}</Option>
-                     )}
-                  </Select>
+               <Item name='category' label="Category" rules={[{ required: true, message: 'Please select a category' }]} >
+               <Select placeholder="Select a category" >
+                  {categories && 
+                  categories.map(({id, name},key) => 
+                  <Option key={key} value={id}>{name}</Option>
+                  )}
+               </Select>
                </Item>
-               <Item name='difficulty' label="Dificultad">
-                  <Select placeholder="Selecciona una Dificultad">
-                     {difficulties && 
-                     difficulties.map((item,key) => 
-                     <Option key={key} value={item}>{item}</Option>
-                     )}
-                  </Select>
+               <Item name='difficulty' label="Difficulty" rules={[{ required: true, message: 'Please select a difficulty' }]}>
+               <Select placeholder="Select a Difficulty">
+                  {difficulties && 
+                  difficulties.map((item,key) => 
+                  <Option key={key} value={item}>{item}</Option>
+                  )}
+               </Select>
                </Item>
                <div className="contentbtnStartGame">
-                  <Button type="primary" htmlType="submit" className="btnStartGame">Ingresar</Button>
+                  <Button type="primary" htmlType="submit" className="btnStartGame">Enter</Button>
                </div>
             </Form>
          </div>
@@ -55,7 +57,8 @@ const mapStateToprops = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getCategory: () => dispatch(GET_CATEGORY())
+    getCategory: () => dispatch(GET_CATEGORY()),
+    getQuestions: params => dispatch(GET_QUESTIONS(params))
 })
 
 export default connect(mapStateToprops, mapDispatchToProps)(FormQuestions)

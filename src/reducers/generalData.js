@@ -4,7 +4,7 @@ import { generalTypes } from "../types/generalData.types";
 const initialState = {
     name:'',
     category:[],
-    difficulty: ['Easy', 'Medium', 'Hard', 'Any Difficulty']
+    difficulty: ['easy', 'medium', 'hard', 'any Difficulty']
 };
 
 const generalData = (state = initialState, action) => {

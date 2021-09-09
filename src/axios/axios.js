@@ -27,7 +27,7 @@ const createUrl = (baseurl, url, params = {}) =>{
     let urlParams = baseurl + url
     if(!isEmpty(params))
         for (const property in params) {
-            urlParams  += `/${params[property]}`;
+            urlParams  += `&${property}=${params[property]}`;
         }else{
             urlParams = baseurl + url
         }

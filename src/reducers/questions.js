@@ -9,7 +9,8 @@ const questions = (state = initialState, action) => {
   switch (action.type) {
     case `${questionsTypes.GET_QUESTIONS}`:
       return {
-     
+          ...initialState,
+          questions: action.payload
       };
     default:
       return state;
