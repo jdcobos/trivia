@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
-import { GET_CATEGORY } from '../../actions/generalData.action'
+import { GET_CATEGORY, SET_USER_DATA } from '../../actions/generalData.action'
 import { connect } from "react-redux";
 import { getCategoriesSelector, getDifficultiesSelector } from '../../selectors/generalData.selectors';
 import { GET_QUESTIONS } from '../../actions/questions.action'
 import {Input, Select, Form, Button} from 'antd'
 import { isEmpty } from 'lodash'
+import PropTypes from 'prop-types';
+import { useHistory } from "react-router-dom";
 
-const FormQuestions = ({ getCategory, categories, difficulties, getQuestions }) => {
+const FormQuestions = ({ getCategory, categories, difficulties, getQuestions, setUserData}) => {
     
+    let history = useHistory();
     const {Option} = Select
     const {Item} = Form
 
@@ -15,11 +18,12 @@ const FormQuestions = ({ getCategory, categories, difficulties, getQuestions }) 
         isEmpty(categories) && getCategory() 
     }, [categories, getCategory])
 
-
     const startGame = value =>{
+        setUserData(value)
         delete value.name
         value.difficulty === 'any difficulty' && delete value.difficulty
         getQuestions(value)
+        history.push("/triviaGame");
     }
 
       return(
@@ -54,12 +58,21 @@ const FormQuestions = ({ getCategory, categories, difficulties, getQuestions }) 
 
 const mapStateToprops = state => ({
     categories: getCategoriesSelector(state),
-    difficulties: getDifficultiesSelector(state)
+    difficulties: getDifficultiesSelector(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
     getCategory: () => dispatch(GET_CATEGORY()),
-    getQuestions: params => dispatch(GET_QUESTIONS(params))
+    getQuestions: params => dispatch(GET_QUESTIONS(params)),
+    setUserData: params => dispatch(SET_USER_DATA(params))
 })
+
+FormQuestions.propTypes = {
+   getCategory: PropTypes.func,
+   categories: PropTypes.array,
+   difficulties: PropTypes.array,
+   getQuestions: PropTypes.func,
+   setUserData: PropTypes.func,
+}
 
 export default connect(mapStateToprops, mapDispatchToProps)(FormQuestions)

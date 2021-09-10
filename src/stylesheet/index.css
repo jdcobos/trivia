@@ -1,12 +1,43 @@
+/***Style Form****/
 .formGame{
     width: 500px;
     margin: 15% auto 0 auto;
 }
-
 .contentbtnStartGame{
     position: relative;
 }
 .btnStartGame{
     position: absolute;
     left: 45%;
+}
+
+/***Style Navbar****/
+.navBar{
+    color: white;
+    height: 5rem;
+    background-color: #19243a;
+    display: flex;
+    align-items: baseline;
+}
+.score{
+    float: right;
+    right: 5%;
+    position: absolute;
+}
+.name{
+    float: left;
+    left: 8%;
+    position: absolute;
+}
+.difficulty{
+    float: right;
+    right: 45%;
+    position: absolute;
+}
+.logo{
+    height: 100px;
+}
+.img{
+    height: auto;
+    width: 80px;
 }

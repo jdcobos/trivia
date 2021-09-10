@@ -2,17 +2,28 @@
 import { generalTypes } from "../types/generalData.types";
 
 const initialState = {
-    name:'',
-    category:[],
-    difficulty: ['easy', 'medium', 'hard', 'any difficulty']
+    categories:[],
+    difficulties: ['easy', 'medium', 'hard', 'any difficulty'],
+    userData:{
+      name:'',
+      category: '',
+      difficulty: '',
+      score: 0,
+      numberQuestion: 0,
+    }
 };
 
 const generalData = (state = initialState, action) => {
   switch (action.type) {
     case `${generalTypes.GET_CATEGORY}`:
       return {
-        ...initialState,
-        category: action.payload
+        ...state,
+        categories: action.payload
+      };
+    case `${generalTypes.SET_USER_DATA}`:
+      return {
+        ...state,
+        userData: {...state.userData, ...action.payload}
       };
     default:
       return state;

@@ -12,3 +12,11 @@ export const GET_CATEGORY = () => (dispatch) => {
       }
   );
 };
+
+
+export const SET_USER_DATA = (param) => (dispatch) => {
+    dispatch({
+       type: generalTypes.SET_USER_DATA, 
+       payload: param,
+    });
+};
