@@ -62,8 +62,27 @@
 
 /*****Style Questions*******/
 
+
+.contentQuestions{
+    width: 100%;
+}
 .questions{
   display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.description{
+    margin-top: 5rem;
+    background-color: #19243a;
+    width: 80%;
+    height: 8rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
 }
 
 .contentSidebar{

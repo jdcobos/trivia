@@ -1,5 +1,6 @@
 import React from 'react'
 import {SIDEBAR_SCORE} from '../../config/sidebar.config'
+import PropTypes from 'prop-types';
 const Sidebar = ({currentPosition}) =>{
     return(
         <div className="sidebar">
@@ -8,6 +9,10 @@ const Sidebar = ({currentPosition}) =>{
             )}
         </div>
     )
+}
+
+Sidebar.propTypes = {
+    currentPosition: PropTypes.number
 }
 
 export default Sidebar

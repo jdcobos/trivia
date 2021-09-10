@@ -1,0 +1,1 @@
+export const getQuestionsSelector =  state => state.questions.questions;
