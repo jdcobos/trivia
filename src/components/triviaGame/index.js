@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import NavBar from '../general/navbarComponent'
 import Sidebar from '../general/sidebarComponent'
 import Questions from './children/questionsComponent'
 const TriviaGame  = () =>{
+
+    const [stateCurrentQuestion, setSteCurrentQuestion] = useState(0)
+
     return(
         <div >
             <NavBar/>
             <div className="questions">
                 <div className="contentQuestions">
-                    <Questions/>
+                    <Questions 
+                    currentPosition={stateCurrentQuestion} 
+                    setSteCurrentQuestion={setSteCurrentQuestion}
+                    />
                 </div>
                 <div className="contentSidebar">
-                    <Sidebar currentPosition={0}/>
+                    <Sidebar currentPosition={stateCurrentQuestion} />
                 </div>
             </div>
         </div>
