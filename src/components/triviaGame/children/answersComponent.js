@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
 import {  SET_USER_DATA } from '../../../actions/generalData.action'
-import {  getUserDataSelector } from '../../../selectors/generalData.selectors'
 
 const Answers = (
     {
@@ -11,11 +10,15 @@ const Answers = (
      setSteCurrentQuestion, 
      currentPosition, 
      setUserData,
-     userData
+     setStateCurrentAswerSelected,
+     stateCurrentAswerSelected,
+     setTimeQuestion
     }) =>{
         
     const letters = ['A', 'B', 'C', 'D']
+  
     const selectedAnswer = value =>{
+       setStateCurrentAswerSelected(value)
        const selectedAnswer = currentQuestion.answers_complete[value]
       if(selectedAnswer === currentQuestion.correct_answer){
         setSteCurrentQuestion(currentPosition + 1)
@@ -24,21 +27,18 @@ const Answers = (
     }
 
     return(
-        <div className="answer"  onClick={()=>selectedAnswer(pos)}>
+        <div className={`answer 
+            ${stateCurrentAswerSelected === pos && 'answerSelected'}`}  
+            onClick={()=>selectedAnswer(pos)}>
             <label>{letters[pos]}.</label> 
             {answer}
         </div>
     )
 }
 
-
-const mapStateToProps = state => ({
-    userData: getUserDataSelector(state)
-})
-
 const mapDispatchToProps = (dispatch) => ({
     setUserData: params => dispatch(SET_USER_DATA(params)),
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Answers)
+export default connect(null, mapDispatchToProps)(Answers)

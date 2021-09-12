@@ -7,7 +7,7 @@ export const GET_QUESTIONS = (params) => (dispatch) => {
     (response) => {
       const answers = [] 
       const  {data:{results}} = response
-      results.map((item) => {
+      results.sort(()=> Math.random() - 0.5).map((item) => {
         answers.push({...item, answers_complete: [...item.incorrect_answers,item.correct_answer] })
       })
         dispatch({

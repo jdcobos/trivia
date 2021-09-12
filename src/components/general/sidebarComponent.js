@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {SIDEBAR_SCORE} from '../../config/sidebar.config'
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { SET_USER_DATA } from '../../actions/generalData.action';
 import { getUserDataSelector } from '../../selectors/generalData.selectors';
-import {isEmpty} from 'lodash'
+
 const Sidebar = ({currentPosition, userData, setUserData }) =>{
 
     useEffect(() =>{

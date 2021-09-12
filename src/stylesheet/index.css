@@ -109,9 +109,19 @@
     cursor: pointer;
 }
 
+.answerSelected{
+    background-color: #293c63;
+}
+
 .answer label{
     padding: 4px;
     color: #8097ca;
     font-weight: bold;
+}
+
+
+/*******accountant********/
+.accountant{
+    margin: 2rem auto 0 38%;
 }
 
