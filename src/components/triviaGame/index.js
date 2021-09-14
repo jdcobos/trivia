@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import NavBar from '../general/navbarComponent'
 import Sidebar from '../general/sidebarComponent'
 import Questions from './children/questionsComponent'
+import ButtonGameOver from '../triviaGame/children/buttonGameOverCompoente'
 const TriviaGame  = () =>{
 
     const [stateCurrentQuestion, setSteCurrentQuestion] = useState(0)
@@ -10,6 +11,7 @@ const TriviaGame  = () =>{
         <div >
             <NavBar/>
             <div className="questions">
+                <ButtonGameOver/>
                 <div className="contentQuestions">
                     <Questions 
                     currentPosition={stateCurrentQuestion} 
