@@ -31,6 +31,9 @@ const Questions = ({
         }
     },[numberQuestions])
 
+
+    console.log('Repuesta correcta====>', currentQuestion?.correct_answer)
+
     return(
         <div className="contentQuestions">
             {currentQuestion &&
