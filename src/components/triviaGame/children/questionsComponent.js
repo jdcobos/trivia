@@ -6,18 +6,28 @@ import DescriptionQuestion from './descriptionQuestionsComponent';
 import Answers from './answersComponent';
 import Accountant from '../children/accountantComponent'
 import ModalCommon from '../../general/modalComponent'
-import DefeatMessage from './defeatMessageComponent';
+import Message from './messageComponent';
 
-const Questions = ({questions, currentPosition, setSteCurrentQuestion, numberQuestions,userData}) =>{
+const Questions = ({
+    questions, 
+    currentPosition, 
+    setSteCurrentQuestion, 
+    numberQuestions,
+    userData
+    }) =>{
 
     const currentQuestion = questions[currentPosition]
     const [stateCurrentAswerSelected, setStateCurrentAswerSelected]  = useState(null)
     const [restartTime, setRestartTime]  = useState(0)
     const [visible, setVisible]  = useState(false)
     const [start, setStart]  = useState(true)
-
+    const [winner, setWinner]  = useState(false)
     useEffect(()=>{
         setRestartTime(numberQuestions)
+        if(numberQuestions > 9){
+            setVisible(true)
+            setWinner(!winner)
+        }
     },[numberQuestions])
 
     return(
@@ -43,11 +53,14 @@ const Questions = ({questions, currentPosition, setSteCurrentQuestion, numberQue
                     )
                    }
                </div>
-               <ModalCommon visibleModal={visible} title='Try again' footerVisible={true}>
-                    <DefeatMessage {...userData}/>
-               </ModalCommon>
             </Fragment>    
             }
+            <ModalCommon visibleModal={visible} title='Try again' footerVisible={true}>
+                <Fragment>
+                    {winner && <div className="labelWinner">winner</div>}
+                    <Message {...userData} message={!winner ? 'Upps this far has come': 'Congratulations you have won'}/>
+                </Fragment>
+            </ModalCommon>
         </div>
     )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-
-const DefeatMessage  = ({name, score}) =>{
+ 
+const Mssage  = ({name, score, message}) =>{
     return (
      <div className="wrongAnswer">
         <div className="wrongAnswerName">
             <div>
-                Upps this far has come     
+               {message}    
             </div>
             <strong> {name}</strong>
         </div>
@@ -17,4 +17,4 @@ const DefeatMessage  = ({name, score}) =>{
     )
 }
 
-export default DefeatMessage
+export default Mssage

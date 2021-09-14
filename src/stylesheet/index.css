@@ -141,3 +141,9 @@
     margin: 2rem auto 0 38%;
 }
 
+.labelWinner{
+    text-align: center;
+    font-size: 25px;
+    color: blue;
+}
+

@@ -8,8 +8,11 @@ import { getUserDataSelector } from '../../selectors/generalData.selectors';
 const Sidebar = ({currentPosition, userData, setUserData }) =>{
 
     useEffect(() =>{
-        const score = SIDEBAR_SCORE.find((item)=> item.pos === currentPosition + 1)
-         setUserData({score: userData.score + score.score})
+        if(currentPosition <= 10){
+            const score = SIDEBAR_SCORE.find((item)=> item.pos === currentPosition)
+            currentPosition === 0 ? setUserData({score: 0}) :
+            setUserData({score: userData.score + score.score})
+        }
     },[currentPosition])
 
     return(

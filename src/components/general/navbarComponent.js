@@ -18,7 +18,7 @@ const NavBar = ({userData}) =>{
                     Name: {name}
                 </div>
                 <div className="difficulty">
-                    difficulty: {difficulty}
+                    Difficulty: {difficulty}
                 </div>
                 <div className="score">
                     Score: {score}

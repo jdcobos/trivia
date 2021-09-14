@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {  SET_USER_DATA } from '../../../actions/generalData.action'
 import ModalCommon from '../../general/modalComponent';
 import Accountant from './accountantComponent';
-import DefeatMessage from './defeatMessageComponent';
+import Mssage from './messageComponent';
 
 const Answers = (
     {
@@ -26,8 +26,12 @@ const Answers = (
     const selectedAnswer = value =>{
        setStateCurrentAswerSelected(value)
        const selectedAnswer = currentQuestion.answers_complete[value]
-       setVisible(!visible)
-       setStart(false)
+       if(currentPosition < 9){
+        setVisible(!visible)
+        setStart(false)
+       }else{
+        nextQuestion()
+       }
       if(selectedAnswer === currentQuestion.correct_answer){
         setCorrectAnswer(true)
       }else{
@@ -77,7 +81,7 @@ const Answers = (
             </div>
             <ModalCommon visibleModal={visible} footerVisible={!correctAnswer && true }>
                     {correctAnswer ? seletedCorrectAnswer: 
-                    <DefeatMessage {...userData} />
+                    <Mssage {...userData}  message='Upps this far has come'/>
                     }
             </ModalCommon>
         </Fragment>
