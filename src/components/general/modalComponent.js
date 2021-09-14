@@ -3,8 +3,16 @@ import {Modal, Button} from 'antd'
 import {useHistory} from 'react-router-dom'
 import { connect } from "react-redux";
 import {  SET_CLEAN } from '../../actions/generalData.action'
+import { SET_CLEAN_QUESTIONS } from '../../actions/questions.action';
 
-const ModalCommon = ({visibleModal, children, title, footerVisible, setClean}) =>{
+const ModalCommon = ({
+    visibleModal, 
+    children, 
+    title, 
+    footerVisible, 
+    setClean, 
+    setCleanQuestions
+    }) =>{
 
     let history = useHistory()
 
@@ -17,6 +25,7 @@ const ModalCommon = ({visibleModal, children, title, footerVisible, setClean}) =
     const handleOk = () => {
         history.push('/home')
         setClean()
+        setCleanQuestions()
         setVisible(!visible)
     }
 
@@ -43,7 +52,8 @@ const ModalCommon = ({visibleModal, children, title, footerVisible, setClean}) =
 
 
 const mapDispatchToProps = (dispatch) => ({
-    setClean: () => dispatch(SET_CLEAN())
+    setClean: () => dispatch(SET_CLEAN()),
+    setCleanQuestions: () => dispatch(SET_CLEAN_QUESTIONS())
 })
 
 

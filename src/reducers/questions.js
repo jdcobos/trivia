@@ -12,6 +12,11 @@ const questions = (state = initialState, action) => {
           ...initialState,
           questions: action.payload
       };
+    case `${questionsTypes.SET_CLEAN_QUESTIONS}`:
+      return {
+          ...initialState,
+          questions: []
+      };
     default:
       return state;
   }

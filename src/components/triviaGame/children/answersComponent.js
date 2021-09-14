@@ -38,6 +38,7 @@ const Answers = (
     const nextQuestion = () =>{
         setVisible(false)
         setStart(true)
+        setStateCurrentAswerSelected(null)
         setSteCurrentQuestion(currentPosition + 1)
         setUserData({numberQuestion: currentPosition + 1})
     }
@@ -56,10 +57,20 @@ const Answers = (
         </div>
     )
 
+
+    const backgroundAnswer = () =>{
+        let classNameStyle
+        if(stateCurrentAswerSelected === pos ){
+           correctAnswer ? 
+            classNameStyle  = 'answerSelectedtrue' : 
+            classNameStyle  = 'answerSelectedFalse'
+        }
+        return classNameStyle
+    }
+
     return(
         <Fragment>
-            <div className={`answer 
-                ${stateCurrentAswerSelected === pos && 'answerSelected'}`}  
+            <div className={`answer ${backgroundAnswer()}`}  
                 onClick={()=>selectedAnswer(pos)}>
                 <label>{letters[pos]}.</label> 
                 {answer}

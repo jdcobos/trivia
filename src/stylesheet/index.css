@@ -121,8 +121,12 @@
     cursor: pointer;
 }
 
-.answerSelected{
-    background-color: #293c63;
+.answerSelectedtrue{
+    background-color: rgb(95, 255, 47);
+}
+
+.answerSelectedFalse{
+    background-color: red;
 }
 
 .answer label{

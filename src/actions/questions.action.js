@@ -18,4 +18,10 @@ export const GET_QUESTIONS = (params) => (dispatch) => {
   );
 };
 
+
+export const SET_CLEAN_QUESTIONS = () => (dispatch) => {
+    dispatch({type: questionsTypes.SET_CLEAN_QUESTIONS});
+};
+
+
   
