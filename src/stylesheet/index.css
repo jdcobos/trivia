@@ -18,6 +18,7 @@
     background-color: #19243a;
     display: flex;
     align-items: baseline;
+    font-size: 20px;
 }
 .score{
     float: right;

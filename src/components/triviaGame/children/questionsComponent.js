@@ -37,7 +37,7 @@ const Questions = ({
                 <Accountant isPlaying={start} restartTime={restartTime} time={30} onFinished={()=>setVisible(true)}/>
                <DescriptionQuestion description={currentQuestion.question}/> 
                <div className="contentAnswer">
-                   {currentQuestion.answers_complete.map((item, key)=>
+                   {currentQuestion.answers_complete.sort(()=> Math.random() - 0.5).map((item, key)=>
                     <Answers 
                         key={key} 
                         pos={key} 
