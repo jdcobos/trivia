@@ -1,5 +1,6 @@
 import React from 'react'
- 
+import PropTypes from 'prop-types';
+
 const Mssage  = ({name, score, message}) =>{
     return (
      <div className="wrongAnswer">
@@ -15,6 +16,12 @@ const Mssage  = ({name, score, message}) =>{
         </div>
     </div>
     )
+}
+
+Mssage.propTypes = {
+    name: PropTypes.string,
+    score: PropTypes.number,
+    message: PropTypes.string
 }
 
 export default Mssage

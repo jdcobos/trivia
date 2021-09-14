@@ -4,6 +4,7 @@ import {  SET_USER_DATA } from '../../../actions/generalData.action'
 import ModalCommon from '../../general/modalComponent';
 import Accountant from './accountantComponent';
 import Mssage from './messageComponent';
+import PropTypes from 'prop-types';
 
 const Answers = (
     {
@@ -91,6 +92,19 @@ const Answers = (
 const mapDispatchToProps = (dispatch) => ({
     setUserData: params => dispatch(SET_USER_DATA(params)),
 })
+
+Answers.propTypes = {
+    pos: PropTypes.number, 
+    answer: PropTypes.string, 
+    currentQuestion: PropTypes.number, 
+    setSteCurrentQuestion: PropTypes.func, 
+    currentPosition: PropTypes.number, 
+    setUserData: PropTypes.func,
+    setStateCurrentAswerSelected: PropTypes.func,
+    stateCurrentAswerSelected: PropTypes.object,
+    setStart: PropTypes.func,
+    userData: PropTypes.object
+}
 
 
 export default connect(null, mapDispatchToProps)(Answers)

@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom'
 import { connect } from "react-redux";
 import { SET_CLEAN } from '../../../actions/generalData.action';
 import { SET_CLEAN_QUESTIONS } from '../../../actions/questions.action';
+import PropTypes from 'prop-types';
 
 const ButtonGameOver = ({setClean,setCleanQuestion}) =>{
 
@@ -25,5 +26,10 @@ const mapDispatchToProps = (dispatch) => ({
     setClean: () => dispatch(SET_CLEAN()),
     setCleanQuestion: () => dispatch(SET_CLEAN_QUESTIONS())
 })
+
+ButtonGameOver.propTypes ={
+    setClean: PropTypes.func,
+    setCleanQuestion: PropTypes.func
+}
 
 export default connect(null, mapDispatchToProps)(ButtonGameOver)

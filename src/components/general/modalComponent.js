@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 import { connect } from "react-redux";
 import {  SET_CLEAN } from '../../actions/generalData.action'
 import { SET_CLEAN_QUESTIONS } from '../../actions/questions.action';
+import PropTypes from 'prop-types';
 
 const ModalCommon = ({
     visibleModal, 
@@ -56,5 +57,12 @@ const mapDispatchToProps = (dispatch) => ({
     setCleanQuestions: () => dispatch(SET_CLEAN_QUESTIONS())
 })
 
-
+ModalCommon.propTypes = {
+    visibleModal: PropTypes.bool, 
+    children: PropTypes.any, 
+    title: PropTypes.string, 
+    footerVisible: PropTypes.bool, 
+    setClean: PropTypes.func, 
+    setCleanQuestions: PropTypes.func
+}
 export default connect(null, mapDispatchToProps)(ModalCommon)

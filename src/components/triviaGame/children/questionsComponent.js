@@ -7,6 +7,7 @@ import Answers from './answersComponent';
 import Accountant from '../children/accountantComponent'
 import ModalCommon from '../../general/modalComponent'
 import Message from './messageComponent';
+import PropTypes from 'prop-types';
 
 const Questions = ({
     questions, 
@@ -70,5 +71,13 @@ const mapStateToprops = state =>({
    numberQuestions: getNumberQuestion(state),
    userData: getUserDataSelector(state)
 })
+
+Questions.propTypes = {
+    questions: PropTypes.array, 
+    currentPosition: PropTypes.number, 
+    setSteCurrentQuestion: PropTypes.func, 
+    numberQuestions: PropTypes.number,
+    userData: PropTypes.object
+}
 
 export default connect(mapStateToprops, null)(Questions)

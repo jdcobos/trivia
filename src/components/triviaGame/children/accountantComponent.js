@@ -1,5 +1,6 @@
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import PropTypes from 'prop-types';
 
 const Accountant = ({isPlaying, restartTime, onFinished, time}) => {
 
@@ -22,5 +23,11 @@ const Accountant = ({isPlaying, restartTime, onFinished, time}) => {
     )
 }
 
+Accountant.propTypes = {
+    isPlaying: PropTypes.bool,
+    restartTime: PropTypes.number,
+    onFinished: PropTypes.func,
+    time: PropTypes.number
+}
 
 export default Accountant
