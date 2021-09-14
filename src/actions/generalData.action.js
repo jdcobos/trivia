@@ -20,3 +20,19 @@ export const SET_USER_DATA = (param) => (dispatch) => {
        payload: param,
     });
 };
+
+export const SET_CLEAN = () => (dispatch) => {
+  dispatch({
+     type: generalTypes.SET_CLEAN_DATA, 
+     payload: {
+      categories:[],
+      userData:{
+        name:'',
+        category: '',
+        difficulty: '',
+        score: 0,
+        numberQuestion: 0,
+      }
+     },
+  });
+};

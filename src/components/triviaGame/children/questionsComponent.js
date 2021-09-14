@@ -6,6 +6,7 @@ import DescriptionQuestion from './descriptionQuestionsComponent';
 import Answers from './answersComponent';
 import Accountant from '../children/accountantComponent'
 import ModalCommon from '../../general/modalComponent'
+import DefeatMessage from './defeatMessageComponent';
 
 const Questions = ({questions, currentPosition, setSteCurrentQuestion, numberQuestions,userData}) =>{
 
@@ -13,16 +14,17 @@ const Questions = ({questions, currentPosition, setSteCurrentQuestion, numberQue
     const [stateCurrentAswerSelected, setStateCurrentAswerSelected]  = useState(null)
     const [restartTime, setRestartTime]  = useState(0)
     const [visible, setVisible]  = useState(false)
+    const [start, setStart]  = useState(true)
+
     useEffect(()=>{
         setRestartTime(numberQuestions)
     },[numberQuestions])
-
 
     return(
         <div className="contentQuestions">
             {currentQuestion &&
             <Fragment>
-                <Accountant restartTime={restartTime} time={30} onFinished={()=>setVisible(true)}/>
+                <Accountant isPlaying={start} restartTime={restartTime} time={30} onFinished={()=>setVisible(true)}/>
                <DescriptionQuestion description={currentQuestion.question}/> 
                <div className="contentAnswer">
                    {currentQuestion.answers_complete.map((item, key)=>
@@ -35,15 +37,14 @@ const Questions = ({questions, currentPosition, setSteCurrentQuestion, numberQue
                         currentPosition={currentPosition}
                         setStateCurrentAswerSelected={setStateCurrentAswerSelected}
                         stateCurrentAswerSelected={stateCurrentAswerSelected}
+                        setStart={setStart}
+                        userData={userData}
                     />
                     )
                    }
                </div>
-               <ModalCommon visibleModal={visible} title='Try again' >
-                    <div>
-                        <label>Upps this far has come {userData.name}</label>
-                        <label>your score is {userData.score} </label>
-                    </div>
+               <ModalCommon visibleModal={visible} title='Try again' footerVisible={true}>
+                    <DefeatMessage {...userData}/>
                </ModalCommon>
             </Fragment>    
             }

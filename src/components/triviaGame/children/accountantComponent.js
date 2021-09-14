@@ -1,13 +1,13 @@
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-const Accountant = ({restartTime, onFinished, time}) => {
+const Accountant = ({isPlaying, restartTime, onFinished, time}) => {
 
     return(
         <div className="accountant">
             <CountdownCircleTimer
                 key={restartTime}
-                isPlaying
+                isPlaying={isPlaying}
                 duration={time}
                 colors={[
                 ['#004777', 0.33],

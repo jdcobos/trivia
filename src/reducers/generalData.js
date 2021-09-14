@@ -25,6 +25,11 @@ const generalData = (state = initialState, action) => {
         ...state,
         userData: {...state.userData, ...action.payload}
       };
+    case `${generalTypes.SET_CLEAN_DATA}`:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }
