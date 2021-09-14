@@ -24,7 +24,7 @@ const ModalCommon = ({
     },[visibleModal])
 
     const handleOk = () => {
-        history.push('/home')
+        history.push('/')
         setClean()
         setCleanQuestions()
         setVisible(!visible)

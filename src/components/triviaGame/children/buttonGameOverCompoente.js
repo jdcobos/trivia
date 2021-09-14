@@ -10,7 +10,7 @@ const ButtonGameOver = ({setClean,setCleanQuestion}) =>{
     let history = useHistory()
 
     const exitGame = () =>{
-        history.push('/home')
+        history.push('/')
         setClean()
         setCleanQuestion()
     }

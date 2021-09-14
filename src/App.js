@@ -13,7 +13,7 @@ function App() {
       <Provider store={store}>  
        <PersistGate persistor={persistor}>
           <Switch>
-              <Route exact path='/home' component={FormQuestions}/>
+              <Route exact path='/' component={FormQuestions}/>
               <Route exact path='/triviaGame' component={TriviaGame}/>
           </Switch>
         </PersistGate>
